@@ -10,11 +10,11 @@ def handle_menu_selection(digit: str) -> VoiceResponse:
     response = VoiceResponse()
     
     if digit == "1":
-        response.say(responses.OPENING_HOURS, language="de-DE")
+        response.say(responses.OPENING_HOURS, language="de-DE", voice="Google.de-DE-Neural2-B", ssml=True)
         response.redirect("/voice")
         
     elif digit == "2":
-        response.say(responses.CALLBACK_MESSAGE, language="de-DE")
+        response.say(responses.CALLBACK_MESSAGE, language="de-DE", voice="Google.de-DE-Neural2-B", ssml=True)
         response.record(
             max_length=30,
             action="/handle-recording",
@@ -23,7 +23,7 @@ def handle_menu_selection(digit: str) -> VoiceResponse:
         )
         
     elif digit == "3":
-        response.say(responses.VOICEMAIL_MESSAGE, language="de-DE")
+        response.say(responses.VOICEMAIL_MESSAGE, language="de-DE", voice="Google.de-DE-Neural2-B", ssml=True)
         response.record(
             max_length=120,
             action="/handle-recording",
@@ -32,11 +32,11 @@ def handle_menu_selection(digit: str) -> VoiceResponse:
         )
         
     elif digit == "9":
-        response.say(responses.FORWARD_MESSAGE, language="de-DE")
+        response.say(responses.FORWARD_MESSAGE, language="de-DE", voice="Google.de-DE-Neural2-B", ssml=True)
         response.dial(os.getenv("FORWARD_NUMBER"))
         
     else:
-        response.say(responses.INVALID_INPUT, language="de-DE")
+        response.say(responses.INVALID_INPUT, language="de-DE", voice="Google.de-DE-Neural2-B", ssml=True)
         response.redirect("/voice")
     
     return response
@@ -52,7 +52,7 @@ def create_main_menu() -> VoiceResponse:
         timeout=5
     )
     
-    gather.say(responses.WELCOME, language="de-DE")
+    gather.say(responses.WELCOME, language="de-DE", voice="Google.de-DE-Neural2-B", ssml=True)
     response.append(gather)
     
     response.redirect("/voice")
